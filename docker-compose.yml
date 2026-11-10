@@ -41,7 +41,7 @@ services:
     volumes:
       - ./backend:/src
     environment:
-      TEST_CONNECTION_STRING: Host=db;Port=5432;Database=school_admission_test;Username=postgres;Password=postgres
+      TEST_CONNECTION_STRING: Host=db;Port=5432;Database=school_admission_test;Username=postgres;Password=60244
     depends_on:
       db:
         condition: service_healthy
