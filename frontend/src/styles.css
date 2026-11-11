@@ -33,9 +33,9 @@ button:disabled { background: #aab6c8; cursor: not-allowed; }
 .class-card-top { display: flex; align-items: center; justify-content: space-between; }
 .class-icon { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 11px; color: #2869b5; background: #eaf2fd; font-size: 22px; }
 .seat-tag { padding: 5px 9px; border-radius: 30px; color: #26734e; background: #e8f7ef; font-size: 12px; font-weight: 600; }
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-bottom: 18px; }
-.stats div { display: flex; flex-direction: column; gap: 2px; padding: 9px; border-radius: 8px; background: #f6f8fb; }
-.stats span { color: #758197; font-size: 11px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-bottom: 18px; }
+.stats div { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 9px; border-radius: 8px; background: #f6f8fb; }
+.stats span { color: #758197; font-size: 11px; line-height: 1.3; }
 .stats strong { font: 700 17px Inter, sans-serif; }
 .full-button { width: 100%; margin-top: auto; }
 .form-card, .hold-card { max-width: 650px; }
@@ -62,4 +62,11 @@ button.secondary:hover:not(:disabled) { background: #dce5f1; }
 .application-item > div { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 code { overflow-wrap: anywhere; color: #42516a; }
 footer { padding: 28px 0 10px; color: #98a2b2; text-align: center; font: 11px Inter, sans-serif; }
-@media (max-width: 600px) { .container { padding: 16px 12px; } .site-header { padding: 20px; } .section-heading, .application-item { align-items: flex-start; flex-direction: column; } .status-panel { align-items: flex-start; flex-direction: column; } }
+
+@media (max-width: 600px) {
+  .container { padding: 16px 12px; }
+  .site-header { padding: 20px; }
+  .section-heading, .application-item { align-items: flex-start; flex-direction: column; }
+  .status-panel { align-items: flex-start; flex-direction: column; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
