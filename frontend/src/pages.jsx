@@ -90,7 +90,6 @@ export function ClassList({ studentId, onApplied }) {
             <h3>{cls.name}</h3>
             <div className="stats">
               <div><span>মোট আসন</span><strong>{cls.totalSeats}</strong></div>
-              <div><span>খালি আসন</span><strong>{cls.availableSeats}</strong></div>
               <div><span>সংরক্ষিত</span><strong>{cls.heldSeats}</strong></div>
               <div><span>নিশ্চিত ভর্তি</span><strong>{cls.confirmedSeats}</strong></div>
             </div>
@@ -129,7 +128,7 @@ export function HoldDetail({ holdId, studentId, onBack }) {
 
   useEffect(() => {
     if (!hold) return;
-    api(`/classes/${hold.classId}`).then((cls) => setClassName(cls.name)).catch(() => { });
+    api(`/classes/${hold.classId}`).then((cls) => setClassName(cls.name)).catch(() => {});
   }, [hold?.classId]);
 
   if (!hold) {
