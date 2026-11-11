@@ -125,6 +125,43 @@ app.MapGet("/classes/{classId}", async (
         : Results.Ok(ToClassResponse(row));
 });
 
+
+// Delete a class.
+app.MapDelete("/classes/{classId}", async (
+    string classId,
+    AppDbContext db) =>
+{
+    var schoolClass = await db.Classes
+        .FirstOrDefaultAsync(c => c.Id == classId);
+
+    if (schoolClass is null)
+    {
+        return Error(
+            404,
+            "CLASS_NOT_FOUND",
+            "এই ক্লাসটি পাওয়া যায়নি।");
+    }
+
+    // Prevent deletion if any reservation history exists.
+    var hasReservations = await db.Holds
+        .AnyAsync(h => h.ClassId == classId);
+
+    if (hasReservations)
+    {
+        return Error(
+            409,
+            "CLASS_HAS_RESERVATIONS",
+            "এই ক্লাসে আবেদন বা ভর্তি সংক্রান্ত রেকর্ড রয়েছে। তাই ক্লাসটি মুছে ফেলা যাবে না।");
+    }
+
+    db.Classes.Remove(schoolClass);
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+
 // ---------------- Holds / applications ----------------
 
 // Create an admission hold.
