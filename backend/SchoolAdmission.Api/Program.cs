@@ -158,7 +158,17 @@ app.MapDelete("/classes/{classId}", async (
 
     await db.SaveChangesAsync();
 
-    return Results.NoContent();
+    // Return delete confirmation.
+    return Results.Json(new
+    {
+        success = true,
+        message = "Class deleted successfully.",
+        data = new
+        {
+            id = schoolClass.Id,
+            name = schoolClass.Name
+        }
+    }, statusCode: StatusCodes.Status200OK);
 });
 
 
