@@ -48,7 +48,7 @@ school-admission-system/
 2. Clone the repository and open it in a terminal:
 
    ```bash
-   git clone https://github.com/<your-username>/school-admission-system.git
+   git clone https://github.com/SabbirNiyaz/school-admission-system.git
    cd school-admission-system
    ```
 
